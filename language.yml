@@ -1,39 +1,39 @@
 #### MATRIX CONFIG FILE
 #                         MATRIX ANTI CHEAT
-#             file: language.yml  | last edit version: @2.0.4
+#             文件: language.yml  | 最终编辑: @2.0.4
 #
-# Links:
-#   1. Issue Tracker: https://github.com/jiangdashao/Matrix-Issues/issues
-#   2. SpigotMC Overview Page: https://www.spigotmc.org/resources/64635/
+# 链接s:
+#   1. 问题收集器: https://github.com/jiangdashao/Matrix-Issues/issues
+#   2. SpigotMC 主页: https://www.spigotmc.org/resources/64635/
 #   3. bStats: https://bstats.org/plugin/bukkit/Matrix
-#   4. Discord Group: https://discord.gg/pEvY55J
+#   4. Discord 服务器: https://discord.gg/pEvY55J
 #
-# Contributors:
-#   Performance#1955: Report a lot of bugs and manage the Github issue tracker
-#   Zak#6435 & Alex#2237: Provide the test server and report some bugs
-#   Kruize#9138 & VariationTime#2942: Report a lot of bugs and test in the production environment
+# 贡献者:
+#   Performance#1955: 提交了若干的BUG并管理问题提交区。
+#   Zak#6435 & Alex#2237: 提供测试服务器并提交了若干的BUG.
+#   Kruize#9138 & VariationTime#2942: 提交了若干的BUG.
 #
-# Thanks for using Matrix! <3
+# 感谢使用 Matrix <3
 
-## Message Prefix
-# Description: How would you like the Matrix prefix formatted?
+## 信息前缀
+# 介绍: 自定义信息前缀
 prefix: '&7[&bMatrix&7]&r '
 
-## Kick Message Format
-# Description: This is the message broadcast to the entire server when someone is kicked because of cheating!
-kick-format: 'player %player% was kicked because of cheating!'
+## 踢出信息格式
+# 介绍: 当玩家被Matrix踢出时，Matrix发送的全服公告。
+kick-format: 'player %player% 因为作弊而被踢出!'
 
-## Broadcast a message when a player is kicked?
+## 是否在玩家被反作弊踢出后，发送全服公告？
 kick-broadcast: true
 
-## Spam Warning Message Format
-# Description: This is the message sent to a player who has triggered the ChatSpam check.
-spam-warning: 'You can''t chat that fast or send the same content over again!'
+## 刷屏警告提示
+# 介绍: 当玩家触发刷屏检测后，将会发送这条信息
+spam-warning: '您不能过多地重复这条信息或过快的发言!'
 
-## Verbose Messages
-# Description: How would you like the verbose messages formatted?
-# Default: '&7%player% failed &c%check% &7check &8| &7%message% &b(+%add_vl%) &8| &7vl:%vl% ping:%ping% tps:%tps%'
+## Verbose 信息 (高级)
+# 介绍: 自定义 Verbose 信息格式
+# 默认: '&7%player% failed &c%check% &7check &8| &7%message% &b(+%add_vl%) &8| &7vl:%vl% ping:%ping% tps:%tps%'
 verbose-format: '&7%player% failed &2%check% &7check &8| &7%message% &b(+%add_vl%) &8| &7vl:%vl% ping:%ping% tps:%tps% component: %component%'
 
 ## Relog message
-relog-message: 'Please wait a few seconds before logging back in!'
+relog-message: '请等待几秒钟再重新加入服务器。'
