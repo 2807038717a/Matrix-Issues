@@ -1,6 +1,6 @@
 #### MATRIX CONFIG FILE
 #                         MATRIX ANTI CHEAT
-#             文件: checks.yml  | 最终编辑: @2.1.1
+#             文件: checks.yml  | 最终编辑: @2.
 #
 # 链接s:
 #   1. 问题收集器: https://github.com/jiangdashao/Matrix-Issues/issues
@@ -136,13 +136,15 @@ hitbox:
   # 启用 HitBox 检测吗?
   enable: true
 
-  # 角度检测设置
-  angle:
-    # 最大角度 (度)
-    max: 90
-
-    # 最短距离
-    min_dist: 1.5
+  # 距离检测设置
+  direction:
+    # HitBox 补偿
+    # 更小 = 更敏感
+    compensation:
+      # 水平 Hitbox 补偿
+      xz: 0.8
+      # 垂直 Hitbox 补偿
+      y: 0.4
 
     # VL 重要性
     vl_weight: 1
@@ -200,8 +202,7 @@ speed:
 # 防止玩家使用 原版/非原版 客户端进行飞行作弊。
 fly:
   # 启用 飞行 检测吗?
-  # 注意: Speed 加速检测必须也是
-  # 启用的
+  # 注意: Speed 加速检测必须也是启用的
   enable: true
 
   # 达到多少的VL值才会取消非法移动  (-1 = 永远不取消)
@@ -356,6 +357,7 @@ block:
         limit: 1
         head: 5
         simple: 3
+        direction: 4
     # 它可以检测过快地向上搭方块。
     tower:
       enable: true
