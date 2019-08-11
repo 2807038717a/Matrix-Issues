@@ -1,15 +1,15 @@
-### Issue description
-<!-- Describe your issue here,  if you have videos for it, you can write the link here too -->
-<!-- If you want to report false positives or bypass, you'd better provide a recorded video as evidence. -->
+### 问题描述
+<!-- 在这里描述你的问题,  如果你有关于这个问题的视频, 你可以在这里留下视频。 -->
+<!-- 如果你想举报一个BUG或误报, 你最好提供一个视频来作为证据. -->
 
 
-### Core information
-** Matrix Version **:
-** Server Version **:
-** ProtocolLib Version **:
-** Plugin List: **:
+### 核心信息
+** Matrix 版本 **:
+** Server 版本 **:
+** ProtocolLib 版本 **:
+** 插件列表: **:
 
-### Other infomation
-** ViaVersion Version: **
-** ProtocolSupport Version: **
-**BungeeCord plugins**:
+### 其他信息
+** ViaVersion 版本: **
+** ProtocolSupport 版本: **
+**BungeeCord 插件列表**:
