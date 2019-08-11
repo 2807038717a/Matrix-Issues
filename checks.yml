@@ -1,121 +1,121 @@
 #### MATRIX CONFIG FILE
 #                         MATRIX ANTI CHEAT
-#             file: checks.yml  | last edit version: @2.1.1
+#             文件: checks.yml  | 最终编辑: @2.1.1
 #
-# Useful Links:
-#   1. Issue Tracker: https://github.com/jiangdashao/Matrix-Issues/issues
-#   2. SpigotMC Overview Page: https://www.spigotmc.org/resources/64635/
+# 链接s:
+#   1. 问题收集器: https://github.com/jiangdashao/Matrix-Issues/issues
+#   2. SpigotMC 主页: https://www.spigotmc.org/resources/64635/
 #   3. bStats: https://bstats.org/plugin/bukkit/Matrix
-#   4. Discord Group: https://discord.gg/pEvY55J
+#   4. Discord 服务器: https://discord.gg/pEvY55J
 #
-# Contributors:
-#   Performance#1955: Report a lot of bugs and manage the Github issue tracker
-#   Zak#6435 & Alex#2237: Provide the test server and report some bugs
-#   Kruize#9138 & VariationTime#2942: Report a lot of bugs and test in the production environment
+# 贡献者:
+#   Performance#1955: 提交了若干的BUG并管理问题提交区。
+#   Zak#6435 & Alex#2237: 提供测试服务器并提交了若干的BUG.
+#   Kruize#9138 & VariationTime#2942: 提交了若干的BUG.
 #
-# Thanks for using Matrix! <3
+# 感谢使用 Matrix <3
 
-## KillAura
-# Prevents the player from using the KillAura/AimBot hack
+## 杀戮光环检测
+# 防止玩家使用 杀戮光环/自瞄 作弊。
 killaura:
-  # Enable KillAura check?
+  # 启用 KillAura 检测吗?
   enable: true
 
-  # Canceling system
-  # It can cancel attack damage when the player is considered to be cheating (-1 = never canceling)
-  # Note: Only some modules have canceling system, not all
+  # 取消系统
+  # 若玩家被检测为作弊，这可以取消他对其他人造成的攻击伤害。 (-1 = 永远不取消)
+  # 注: 只有部分检测拥有取消系统，并不是全部。
   cancel_vl: 3
 
-  # Module Settings
+  # 检测模块设置
   modules:
-    # Machine Learning KillAura check
-    # It uses machine learning algorithms to distinguish whether players cheat or not.
+    # 机器学习杀戮光环检测
+    # 这使用机器学习算法来判断玩家是否在作弊。
     machine_learning:
       enable: true
       vl_weight: 15
-    # AutoClicker check
-    # Detecting player using auto clicker software
+    # 连点器检测
+    # 检测玩家是否在使用连点器。
     auto_clicker:
-      # clicks per second(CPS) check
+      # 每秒点击数(CPS) 检测
       cps:
         enable: true
         max_cps: 15
         vl_weight: 4
-      # click delay check
+      # 点击延迟检测
       delay:
         enable: true
         vl_weight: 3
-        # The min click delay differences player should have
-        # higher value = more sensitive, but I suggest you don't set it higher, because it will cause more false flags
+        # 不同玩家拥有不同的最短点击延迟
+        # 数值更高 = 更敏感, 但我不建议您将其设置的太高，这可能会造成误判。
         delay_diff_threshold: 150
-      # packet auto clicker pattern, it can detect some external auto clicker software
+      # 数据包连点模式, 它可以检测一些外部的连点软件。
       packet:
         enable: true
         vl_weight: 5
-      # long-term-cps difference check
+      # 长期 CPS 差异检测
       cps_long_term:
         enable: true
         vl_weight: 5
-    # Attack Accuracy check
-    # Preventing player from attacking other entities wit low miss rates
+    # 命中率检测
+    # 防止玩家以高命中率攻击其他玩家。
     accuracy:
       enable: true
       vl_weight: 20
       max_accuracy: 70
-    # Yaw Pattern
-    # Analysing the yaw movement when player fighting
+    # Yaw 模式
+    # 当玩家战斗时，分析玩家 yaw轴 移动
     yaw:
       enable: true
       vl_weight: 5
-    # Pitch Pattern
-    # Analysing the pitch movement when player fighting
+    # Pitch 模式
+    # 当玩家战斗时，分析玩家 pitch轴 移动
     pitch:
       enable: true
       vl_weight: 5
-    # Derp
-    # Preventing player's pitch value > 90 or pitch<-90
+    # 摇头
+    # 检测玩家的 Pitch值  > 90 或者 <-90
     derp:
       enable: true
       vl_weight: 10
-    # Snap aiming
-    # Preventing player from aiming fast when fighting
+    # 捕捉瞄准
+    # 防止玩家快速切换攻击目标
     snap_aim:
       enable: true
       vl_weight: 5
-    # Dead entities hitting
-    # Preventing player from attacking their target after he killed the target
+    # 已死亡的实体检测
+    # 在杀死目标后，防止玩家攻击他们死亡的实体。
     dead:
       enable: true
       vl_weight: 3
-    # No swing
-    # Preventing player from attacking entities without arm swing
+    # 不摇动手臂
+    # 防止玩家在攻击玩家时不摇动手臂。
     noswing:
       enable: true
       vl_weight: 2
-    # Simple packet pattern
-    # Preventing player from attacking others immediately after sending a flying packet
+    # 简单数据包模式
+    # 防止玩家发送 Flying 数据包后，立即攻击他人。
     simple:
       enable: true
       vl_weight: 1
-    # Critical hit
-    # Preventing player from critical attacking other entities without correct jumping
+    # 暴击
+    # 防止玩家在没有满足暴击条件的情况下，暴击其他人
     critical:
       enable: true
       vl_weight: 4
       cancel: true
-    # super knock back check
+    # 过大击退检测
     superkb:
       enable: true
       vl_weight: 5
-    # auto block
+    # 自动格挡检测
     auto_block:
       enable: true
       vl_weight: 4
-    # combat style check
+    # 战斗特征检测
     style:
       enable: true
       vl_weight: 10
-    # aim feature check
+    # 瞄准特征检测
     aim_feature:
       enable: true
       vl_weight: 5
@@ -123,231 +123,231 @@ killaura:
     fake_rotation:
       enable: true
       vl_weight: 8
-  # Violation Thresholds
-  # number_of_violations: '<command>'
+  # VL 阈值
+  # VL 值: '<指令>'
   commands:
-    20: 'matrix notify %player% might be using combat hacks (KillAura)'
-    35: 'matrix notify %player% is using combat hacks (KillAura) #2'
-    45: 'matrix kick %player% KillAura'
+    20: 'matrix notify %player% 可能在战斗作弊 (KillAura)'
+    35: 'matrix notify %player% 可能在战斗作弊 (KillAura) #2'
+    45: 'matrix kick %player% 杀戮光环'
 
-## HitBox
-# Description: This check prevents players from using HitBox, Angle, Reach hacks.
+## 击打体积
+# 介绍: 此项检测防止玩家使用 HitBox, Angle, Reach 作弊。（长臂猿？）
 hitbox:
-  # Enable HitBox check?
+  # 启用 HitBox 检测吗?
   enable: true
 
-  # Angle check settings
+  # 角度检测设置
   angle:
-    # Maximum angle (degrees)
+    # 最大角度 (度)
     max: 90
 
-    # Minimum distance check
+    # 最短距离
     min_dist: 1.5
 
-    # Violation weight
+    # VL 重要性
     vl_weight: 1
 
-  # Reach check settings
+  # 远距离检测设置
   reach:
-    # Maximum attack reach distance
+    # 最大攻击距离
     max_reach: 3.1
 
-    # How much lenient should be when a player is moving
-    # Higher = More lenient for moving players
-    # Suggest Value: 1.0 ~ 1.5
-    # Reach tolerance value = move_dist * lag_tick * move_lenient
+    # 当玩家移动时应该需要怎样放宽处理
+    # 更高的值 = 更宽容的进行检测
+    # 建议数值: 1.0 ~ 1.5
+    # 达到容差值 = 移动距离 * 卡顿TIck * 移动宽容值
     move_lenient: 1.1
 
-  # Violations needed to cancel illegal hits (-1 = never cancel)
+  # 达到多少的VL值才会取消非法击打？ (-1 = 永远不取消)
   cancel_vl: 4
 
-  # Violation Thresholds
-  # number_of_violations: '<command>'
+  # VL 阈值
+  # VL值: '<指令>'
   commands:
-    10: 'matrix notify %player% tried to reach entity outside max reach distance (HitBox)'
-    15: 'matrix notify %player% tried to reach entity outside max reach distance (HitBox) #2'
-    24: 'matrix kick %player% Reach/HitBox Hacks'
+    10: 'matrix notify %player% 尝试在最大距离外击打实体 (HitBox)'
+    15: 'matrix notify %player% 尝试在最大距离外击打实体 (HitBox) #2'
+    24: 'matrix kick %player% 长距离作弊'
 
-## Movement Speed Check
-# This checks how fast a player moves, and prevents the player from moving too fast.
+## 移动加速检测
+# 检测玩家移动有多快，并防止玩家以过快的速度移动。
 speed:
-  # Enable this check?
-  # Warning: Will also disable
-  # flight detection.
+  # 启用 this 检测吗?
+  # 注意: 这也将会禁用
+  # 飞行检测.
   enable: true
 
-  # Violations needed to cancel illegal movements (-1 = never cancel)
+  # 达到多少的VL值才会取消非法移动 (-1 = 永远不取消)
   cancel_vl: 30
 
-  # Enable sprint direction check?
+  # 启用 疾跑方向 检测吗?
   sprint_direction: true
 
-  # Enable FastClimb/FastLadder check?
+  # 启用 快速攀爬/快速上梯 检测吗?
   fastclimb: true
 
-  # Enable NoSlow check?
-  # It can detect player moving faster when eating/sneaking/shooting bow
+  # 启用 不减速 检测吗?
+  # 它将会检测玩家在 吃/蹲/射弓 时的速度是否过快
   noslow: true
 
-  # Violation Thresholds
-  # number_of_violations: '<command>'
+  # VL 阈值
+  # VL值: '<指令>'
   commands:
-    55: 'matrix notify %player% tried to move faster than usual (Speed) #1'
-    90: 'matrix notify %player% tried to move faster than usual (Speed) #2'
-    220: 'matrix kick %player% Speed Hacks'
+    55: 'matrix notify %player% 尝试以过快的速度移动 (Speed) #1'
+    90: 'matrix notify %player% 尝试以过快的速度移动 (Speed) #2'
+    220: 'matrix kick %player% 加速作弊'
 
-## Fly
-# Prevents the player from using both vanilla and non-vanilla fly hacks.
+## 飞行
+# 防止玩家使用 原版/非原版 客户端进行飞行作弊。
 fly:
-  # Enable this check?
-  # Warning: Speed check must
-  # also be enabled.
+  # 启用 飞行 检测吗?
+  # 注意: Speed 加速检测必须也是
+  # 启用的
   enable: true
 
-  # Violations needed to cancel illegal movements (-1 = never cancel)
+  # 达到多少的VL值才会取消非法移动  (-1 = 永远不取消)
   cancel_vl: 50
 
-  # Strict Glide check
+  # 严格滑行检测
   strict_glide:
-    # Enable strict glide check?
+    # 启用 严格滑行 检测吗?
     enable: true
 
-    # Falling distance and expectation deserve maximum deviation
-    # If difference lager than this value, the player will be flagged
+    # 下降距离与期望值的最大偏差
+    # 如果这两个值差异较大, 玩家将会被标记。
     max_diff: 0.5
 
-  # NoFall check
+  # 无掉落伤害检测
   nofall:
-    # Force deal damage after setback?
+    # 在撤回后给予实际的伤害吗
     damage: true
 
-  # Setback method (back/ground)
-  # back: teleport the player to the last legit location
-  # ground: teleport the player to the ground under the player
+  # 撤回方法 (back/ground)
+  # back: 将玩家传送到最后的合法位置
+  # ground: 将玩家传送到在玩家下面的方块
   setback: back
 
-  # Violation Thresholds
-  # number_of_violations: '<command>'
+  # VL 阈值
+  # VL值: '<指令>'
   commands:
-    50: 'matrix notify %player% tried to fly (Fly) #1'
-    100: 'matrix notify %player% tried to fly (Fly) #2'
-    180: 'matrix kick %player% Fly Related Hacks'
+    50: 'matrix notify %player% 正在尝试飞行 (Fly) #1'
+    100: 'matrix notify %player% 正在尝试飞行 (Fly) #2'
+    180: 'matrix kick %player% 飞行作弊'
 
 
-## BadPackets
-# Prevents player from sending too many movement packets or sending illegal packets
+## 坏数据包
+# 防止玩家发送过多的移动数据包或发送过多的非法数据包。
 badpackets:
-  # Enable this check?
+  # 启用本项检测吗?
   enable: true
 
-  # Violations needed to cancel illegal movement packets (-1 = never cancel)
+  # 达到多少的VL值才会取消非法数据包 (-1 = 永远不取消)
   cancel_vl: 30
 
-  # packet queue size (seconds)
-  # smaller-> detect timer faster, higher -> more friendly for high latency players
+  # 数据包队列大小 (秒)
+  # 更小-> 更快检测变速齿轮, 更高 -> 对高延迟玩家更友好
   cache_size: 30
 
-  # Tick Rate check
-  # It can detect some smooth Timer (1.01~1.05 timer fast)
+  # Tick率 检测
+  # 它可以检测一些平稳的变速齿轮 (1.01~1.05 变速)
   tick_rate:
-    # Enable this check?
+    # 启用这项检测吗?
     enable: true
 
-    # Cache size (Seconds)
-    # Bigger: Less false positives for laggy players
-    # Smaller: More strict, detect Timer hack fast
+    # 缓存大小 (秒)
+    # 更大: 对高延迟玩家的误报会更少
+    # 更小: 更严格，能快速检测变速齿轮作弊。
     cache_size: 5
 
-  # Useless verbose message output (+0 VL messages)
-  # If you don't want to see BadPackets spam in the verbose messages
-  # You can set this to false
+  # 无用的Verbose信息输出 (+0 VL 信息)
+  # 如果你不想看到BadPackets在verbose信息中刷屏
+  # 你可以将本项选项设置到false.
   verbose_useless: true
 
-  # Violation Thresholds
-  # number_of_violations: '<command>'
+  # VL 阈值
+  # VL值: '<指令>'
   commands:
-    100: 'matrix notify %player% is sending unusual packets to server (BadPackets) #1'
-    150: 'matrix notify %player% is sending unusual packets to server (BadPackets) #2'
-    240: 'matrix kick %player% Sending Unusual Packets'
+    100: 'matrix notify %player% 在发送不异常的数据包 (BadPackets) #1'
+    150: 'matrix notify %player% 在发送异常的数据包 (BadPackets) #2'
+    240: 'matrix kick %player% 发送异常数据包'
 
-## FastUse
-# Check prevents player from eating or using an item too quickly.
+## 快速使用
+# 检测并防止玩家快速使用/吃物品。
 fastuse:
-  # Enable this check?
+  # 启用 此项 检测吗?
   enable: true
 
-  # Violations needed to cancel illegal item use (-1 = never cancel)
+  # 达到多少的VL值才会取消非法使用物品 (-1 = 永远不取消)
   cancel_vl: 5
 
-  # Violation weight
+  # VL 重要值
   vl_weight: 1
 
-  # Violation Thresholds
-  # number_of_violations: '<command>'
+  # VL 阈值
+  # VL值: '<指令>'
   commands:
-    5: 'matrix notify %player% tried to use an item faster than usual (FastUse)'
-    12: 'matrix kick %player% FastUse Hacks'
+    5: 'matrix notify %player% 尝试比寻常更快地使用物品 (FastUse)'
+    12: 'matrix kick %player% 快速使用作弊'
 
-## FastBow
-# Check prevents player from shooting a bow too quickly.
+## 快速射弓
+# 检测并防止玩家快速射弓
 fastbow:
-  # Enable this check?
+  # 启用 这项 检测吗?
   enable: true
 
-  # Violations needed to cancel illegal bow use (-1 = never cancel)
+  # 达到多少的VL值才会取消非法射弓 (-1 = 永远不取消)
   cancel_vl: 7
 
-  # Violation Weight
+  # VL 重要值
   vl_weight: 1
 
-  # Violation Thresholds
-  # number_of_violations: '<command>'
+  # VL 阈值
+  # VL值: '<指令>'
   commands:
-    5: 'matrix notify %player% is trying to shoot a bow too quickly (FastBow)'
-    15: 'matrix kick %player% FastBow Hacks'
+    5: 'matrix notify %player% 在尝试快速地射弓 (FastBow)'
+    15: 'matrix kick %player% 快速射弓作弊'
 
-## FastHeal
-# Check prevents player from regaining health too quickly.
+## 快速治疗
+# 检测并防止玩家快速地恢复血量
 fastheal:
-  # Enable this check?
+  # 启用 这项 检测吗?
   enable: true
 
-  # Violation Weight
+  # VL 重要值
   vl_weight: 2
 
-  # Violation Thresholds
-  # number_of_violations: '<command>'
+  # VL 阈值
+  # VL值: '<指令>'
   commands:
     10: 'matrix notify %player% tried to regain health too quickly (FastHeal)'
     20: 'matrix kick %player% FastHeal Hacks'
 
-## Block
-# Check prevents the player from breaking, placing, or bridge/tower up quickly
+## 方块
+# 检测并防止玩家过快地 破坏, 放置, 搭/向上搭
 block:
-  # Enable this check?
+  # 启用 this 检测吗?
   enable: true
 
-  # Violations needed to cancel illegal breaking/placing of blocks (-1 = never cancel)
+  # 达到多少的VL值才会取消非法放置/破坏 (-1 = 永远不取消)
   cancel_vl: 15
 
-  # Scaffold drag back system
-  # It can drag player back instead of canceling placing the block if they are using scaffold cheat
+  # 搭路拖回系统
+  # 如果他们在使用搭路作弊，这可以代替方块撤回，而使用拽回玩家实体的方法。
   drag_back:
     enable: true
     start_vl: 3
 
-  # Modules List
-  # You can turn off some modules here
+  # 模块列表
+  # 你可以在这里关闭一些模块
   modules:
-    # It can detect player breaking block faster
+    # 它可以检测过快地破坏方块
     fastbreak:
       enable: true
       vl_weight: 4
-    # It can detect player placing block faster
+    # 它可以检测过快放置方块
     fastplace:
       enable: true
       vl_weight: 1
-    # It can detect player bridging faster
+    # 它可以检测过快地搭路
     scaffold:
       enable: true
       vl_weights:
@@ -356,74 +356,74 @@ block:
         limit: 1
         head: 5
         simple: 3
-    # It can detect player towering up faster
+    # 它可以检测过快地向上搭方块。
     tower:
       enable: true
       vl_weight: 2
-    # It can detect player placing block without swing hand
+    # 它可以检测玩家不晃手臂但破坏/放置方块
     noswing:
       enable: true
       vl_weight: 1
-    # detect player not send abort breaking packet
+    # 检测玩家是不是不发送破坏中止数据包
     abort:
       enable: true
       vl_weight: 0
 
-  # Violation Thresholds
-  # number_of_violations: '<command>'
+  # VL 阈值
+  # VL值: '<指令>'
   commands:
-    10: 'matrix notify %player% tried to place/break a block too quickly (FastPlace)'
-    20: 'matrix kick %player% FastPlace/FastBreak Hacks'
+    10: 'matrix notify %player% 尝试过快地放置/破坏方块 (FastPlace)'
+    20: 'matrix kick %player% 快速放置/破坏作弊'
 
-## Jesus
-# Check prevents the player from moving too too quickly in liquids, or walking on liquid.
+## 水上行走
+# 检测并防止玩家在水中移动过快，甚至是在水上走。
 jesus:
-  # Enable this check?
+  # 启用 这项 检测吗?
   enable: true
 
-  # Violations needed to cancel illegal movements (-1 = never cancel)
+  # 达到多少的VL值才会取消非法移动  (-1 = 永远不取消)
   cancel_vl: 15
 
-  # Violation Thresholds
-  # number_of_violations: '<command>'
+  # VL 阈值
+  # VL值: '<指令>'
   commands:
-    15: 'matrix notify %player% tried to move illegally in liquid (Jesus)'
-    25: 'matrix kick %player% Jesus/WaterSpeed/WaterFly Hacks'
+    15: 'matrix notify %player% 尝试在水中非法移动 (Jesus)'
+    25: 'matrix kick %player% 水中加速 作弊'
 
-## Inventory
-# Check prevents the player from using illegal inventory modifications such as Steal.
-# Also prevents quick inventory movement hacks.
+## 背包
+# 检测并防止玩家使用非法模组，例如 盗取.
+# 同时也防止玩家使用快速操作背包的作弊。
 inventory:
-  # Enable this check?
+  # 启用 这项 检测吗?
   enable: true
 
-  # Violations needed to cancel illegal movements of items (-1 = never cancel)
+  # 达到多少的VL值才会取消非法背包操作 (-1 = 永远不取消)
   cancel_vl: 10
 
-  # Enable ChestStealer check?
-  # It can detect player taking items out of chest faster
+  # 启用 ChestStealer 检测吗?
+  # 这可以检测玩家过快的从箱子中拿取东西。
   chest_stealer: true
 
-  # Disable InventoryMove check
-  # If you don't need InventoryMove check, you can set this to 'true' to disable it
-  # This option ONLY works for 1.12/1.13/+ server
+  # 禁用 背包移动 检测
+  # 如果你不需要背包移动检测，你可以将其设置为 true
+  # 这项选项只能在 1.12/1.13/+ 版本上生效
   disable_invmove: false
 
-  # Violation Thresholds
-  # number_of_violations: '<command>'
+  # VL 阈值
+  # VL值: '<指令>'
   commands:
-    10: 'matrix notify %player% moved items in inventory too quickly (ChestSteal)'
-    20: 'matrix kick %player% ChestSteal/Inventory Hacks'
+    10: 'matrix notify %player% 在背包中过快地移动物品 (ChestSteal)'
+    20: 'matrix kick %player% 背包作弊'
 
-## Velocity
-# Check prevents the player from using any type of anti-knockback hacks.
+## 反击退
+# 防止并检测玩家使用反击退作弊
 velocity:
-  # Enable this check?
+  # 启用 这项 检测吗?
   enable: true
 
-  # Modules List
-  # You can turn off some velocity modules here
-  # Set it to false to disable the module
+  # 模组列表
+  # 你可以关闭一些反击退检测
+  # 设置到 false 来关闭这些检测
   modules:
     vertical:
       enable: true
@@ -444,155 +444,155 @@ velocity:
       enable: true
       vl_weight: 7
 
-  # Violation Thresholds
-  # number_of_violations: '<command>'
+  # VL 阈值
+  # VL值: '<指令>'
   commands:
-    10: 'matrix notify %player% tried to ignore server velocity (Anti-Knockback)'
-    15: 'matrix notify %player% tried to ignore server velocity (Anti-Knockback) #2'
-    20: 'matrix kick %player% Velocity/Anti-Knockback Hacks'
+    10: 'matrix notify %player% 尝试无视服务器击退 (Anti-Knockback)'
+    15: 'matrix notify %player% 尝试无视服务器击退 (Anti-Knockback) #2'
+    20: 'matrix kick %player% 反击退作弊'
 
-## Spam
-# Check prevents a player from spamming messages in the servers chat.
+## 刷屏
+# 检测并防止玩家刷屏
 chat:
-  # Enable this check?
+  # 启用 这项 检测吗?
   enable: true
 
-  # Minimum amount of time between messages (Seconds)
+  # 两条信息间隔时间 (秒)
   min_time: 3
 
-  # Violations needed to cancel sent messages (-1 = never cancel)
+  # 达到多少的VL值才会取消刷屏  (-1 = 永远不取消)
   cancel_vl: 3
 
-  # Violation Thresholds
-  # number_of_violations: '<command>'
+  # VL 阈值
+  # VL值: '<指令>'
   commands:
-    4: 'matrix notify %player% is spamming the chat (ChatSpam)'
-    10: 'matrix kick %player% Stop spamming the chat!'
+    4: 'matrix notify %player% 在刷屏 (ChatSpam)'
+    10: 'matrix kick %player% 不要刷屏!'
 
-## Interact
-# Check prevents the player from illegally interacting with entities and blocks.
+## 交互
+# 检测并防止玩家与其他实体或方块进行非法交互
 interact:
-  # Enable this check?
+  # 启用 这项 检测吗?
   enable: true
 
-  # Modules List
+  # 模块列表
   modules:
-    # It can detect player breaking blocks through walls
+    # 这可以检测玩家隔墙挖方块
     break_block:
       enable: true
       vl_weight: 1
-    # It can detect player attacking other entities through walls
+    # 这可以检测玩家隔墙击打其他玩家
     attack:
       enable: true
       vl_weight: 1
-    # It can detect player interacting blocks too far away
+    # 这可以检测玩家远距离交互方块
     block_reach:
       enable: true
       vl_weight: 1
 
-  # Violation Thresholds
-  # number_of_violations: '<command>'
+  # VL 阈值
+  # VL值: '<指令>'
   commands:
-    10: 'matrix notify %player% tried to illegally interact with Entity/Block (Interact)'
-    15: 'matrix kick %player% Illegally Interacting with Block/Entity'
+    10: 'matrix notify %player% 尝试非法交互实体/方块 (Interact)'
+    15: 'matrix kick %player% 非法交互实体/方块'
 
-## AutoFish
-# Check prevents the player from using an Auto-Fishing mod or hack.
+## 自动钓鱼
+# 检测并防止玩家使用自动钓鱼作弊
 autofish:
-  # Enable this check?
+  # 启用 这项 检测吗?
   enable: true
 
-  # Violation Thresholds
-  # number_of_violations: '<command>'
+  # VL 阈值
+  # VL值: '<指令>'
   commands:
-    6: 'matrix notify %player% is using auto fish (AutoFish)'
-    15: 'matrix kick %player% No Auto Fishing!'
+    6: 'matrix notify %player% 正在使用自动钓鱼 (AutoFish)'
+    15: 'matrix kick %player% 请勿自动钓鱼'
 
-## Phase
-# Check prevents the player people glitching through blocks.
+## 穿墙
+# 检测并防止玩家穿墙
 phase:
-  # Enable this check?
+  # 启用 这项 检测吗?
   enable: true
 
-  # Which type of block should be exempt from phase checking?
-  # If you find any false positive, you can add that block type into it
-  # For example:
+  # 哪种方块应该被本项检测排除在外？
+  # 如果您发现了一些误报, 你可以添加那个方块的类型在这里
+  # 例如:
   # exclude_types:
   #   - 'AIR'
   exclude_types: {}
 
-  # Cancel malicious movements
+  # 取消非法移动吗？
   setback: true
 
-  # Violation Thresholds
-  # number_of_violations: '<command>'
+  # VL 阈值
+  # VL值: '<指令>'
   commands:
-    5: 'matrix notify %player% is phase into block (Phase)'
-    10: 'matrix notify %player% is phase into block (Phase) #2'
+    5: 'matrix notify %player% 在穿墙 (Phase)'
+    10: 'matrix notify %player% 在穿墙 (Phase) #2'
 
-## AutoBot
-# Check prevents player use some Bot mods like Baritone
+## 机器人
+# 检测并防止玩家使用机器人，例如：Baritone
 autobot:
-  # Enable this check?
+  # 启用 这项 检测吗?
   enable: true
 
-  # Violation Thresholds
-  # number_of_violations: '<command>'
+  # VL 阈值
+  # VL值: '<指令>'
   commands:
-    5: 'matrix notify %player% suspected use of automatic robots (AutoBot)'
-    10: 'matrix notify %player% suspected use of automatic robots (AutoBot) #2'
-    15: 'matrix kick %player% Auto-Bot'
+    5: 'matrix notify %player% 可能是机器人 (AutoBot)'
+    10: 'matrix notify %player% 可能是机器人 (AutoBot) #2'
+    15: 'matrix kick %player% 可能在使用机器人'
 
-## Elytra
-# Checks prevents player using Elytra+, ElytraFlight, etc
-# Only works for 1.9+
+## 鞘翅
+# 检测并防止玩家使用 Elytra+, ElytraFlight, 等等
+# 只能在 1.9+ 版本上启用
 elytra:
-  # Enable this check?
+  # 启用 这项 检测吗?
   enable: true
 
-  # Setback violation level (-1 = never setback)
+  # 到达多少VL才会将其移动撤回 (-1 = 永远不)
   setback_vl: 5
 
-  # unequip elytra VL
-  # If player reached this VL, Matrix will make it out of the gliding state (-1 = disable this feature)
+  # 脱离滑翔的 VL值
+  # 如果玩家达到了这个VL值, Matrix 将会使其脱离滑翔状态 (-1 = 取消这项特性)
   unequip_vl: 20
 
-  # Violation Thresholds
-  # number_of_violations: '<command>'
+  # VL 阈值
+  # VL值: '<指令>'
   commands:
-    10: 'matrix notify %player% suspected using elytra flight (Elytra)'
-    20: 'matrix notify %player% suspected using elytra flight (Elytra) #2'
-    40: 'matrix kick %player% Elytra Flight'
+    10: 'matrix notify %player% 可能在使用鞘翅飞行作弊 (Elytra)'
+    20: 'matrix notify %player% 可能在使用鞘翅飞行作弊 (Elytra) #2'
+    40: 'matrix kick %player% 鞘翅作弊'
 
-## Vehicle
-# Checks prevents player using VehicleFlight, VehicleSpeed, EntitySpeed..
-# Only works for 1.9+
+## 船
+# 检测并防止玩家使用 VehicleFlight, VehicleSpeed, EntitySpeed..
+# 只对 1.9+ 版本有效
 vehicle:
-  # Enable this check?
+  # 启用 这项 检测吗?
   enable: true
 
-  # Vehicle Speed/ Entity Speed
+  # 船 加速/ 实体 加速
   speed:
-    # Enable this modules?
+    # 启用 这项模块?
     enable: true
 
-    # setback VL (-1 = disable setback)
+    # 撤回 VL (-1 = 禁用撤回)
     setback_vl: 2
 
-  # Vehicle Flight / Boat Flight
+  # 船 飞行
   flight:
-    # Enable this modules?
+    # 启用 这项模块?
     enable: true
 
-    # setback vl (-1 = never setback)
+    # 撤回 vl (-1 = 禁用撤回)
     setback_vl: 4
 
-    # leave vehicle vl (-1 = never leave vehicle)
+    # 离开船VL (-1 = 永远不离开)
     leave_vehicle: 10
 
-  # Violation Thresholds
-  # number_of_violations: '<command>'
+  # VL 阈值
+  # VL值: '<指令>'
   commands:
-    5: 'matrix notify %player% suspected using vehicle cheat (Vehicle)'
-    10: 'matrix notify %player% suspected using vehicle cheat (Vehicle) #2'
-    17: 'matrix kick %player% Suspicious vehicle movement'
+    5: 'matrix notify %player% 可能在使用船作弊 (Vehicle)'
+    10: 'matrix notify %player% 可能在使用船作弊  #2'
+    17: 'matrix kick %player% 非法船移动'
