@@ -119,7 +119,7 @@ killaura:
     aim_feature:
       enable: true
       vl_weight: 5
-    # fake rotation
+    # 假转头
     fake_rotation:
       enable: true
       vl_weight: 8
