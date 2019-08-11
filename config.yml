@@ -26,9 +26,9 @@ player_latency_protection:
   # 启用这一特性？
   enable: true
 
-## Cloud Service
-# Matrix can connect to the cloud service and provide some
-# service for you, also, it's free!
+## 云服务
+# Matrix 可以连接到云服务器，并提供
+# 一些云服务，当然，这是免费的。
 cloud:
   # 启用云服务？
   enable: true
