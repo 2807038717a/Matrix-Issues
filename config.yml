@@ -1,75 +1,75 @@
 #### MATRIX CONFIG FILE
 #                         MATRIX ANTI CHEAT
-#             file: config.yml  | last edit version: @2.1.1
+#             文件: config.yml  | 最终编辑: @2.1.1
 #
-# Links:
-#   1. Issue Tracker: https://github.com/jiangdashao/Matrix-Issues/issues
-#   2. SpigotMC Overview Page: https://www.spigotmc.org/resources/64635/
+# 链接s:
+#   1. 问题收集器: https://github.com/jiangdashao/Matrix-Issues/issues
+#   2. SpigotMC 主页: https://www.spigotmc.org/resources/64635/
 #   3. bStats: https://bstats.org/plugin/bukkit/Matrix
-#   4. Discord Group: https://discord.gg/pEvY55J
+#   4. Discord 服务器: https://discord.gg/pEvY55J
 #
-# Contributors:
-#   Performance#1955: Report a lot of bugs and manage the Github issue tracker
-#   Zak#6435 & Alex#2237: Provide the test server and report some bugs
-#   Kruize#9138 & VariationTime#2942: Report a lot of bugs and test in the production environment
+# 贡献者:
+#   Performance#1955: 提交了若干的BUG并管理问题提交区。
+#   Zak#6435 & Alex#2237: 提供测试服务器并提交了若干的BUG.
+#   Kruize#9138 & VariationTime#2942: 提交了若干的BUG.
 #
-# Thanks for using Matrix! <3
+# 感谢使用 Matrix <3
 
-## Check update when starting up?
+## 需要在启动服务器后进行版本检查吗？
 check_update: true
 
-## Player Latency Protection
-# Description: Increases the amount of violations needed to
-# trigger the Punish Commands (checks.yml) for players with
-# high latency. Good for servers with less RAM.
+## 玩家滞后补偿
+# 介绍: 针对玩家的延迟，会适当的提高
+# VL，减慢执行处罚指令的时间（checks.yml）
+# 对内存小的服务器比较友好。
 player_latency_protection:
-  # Enable this feature?
+  # 启用这一特性？
   enable: true
 
 ## Cloud Service
 # Matrix can connect to the cloud service and provide some
 # service for you, also, it's free!
 cloud:
-  # Enable Cloud Service ?
+  # 启用云服务？
   enable: true
 
-## Server Lag Protection
-# Description: Automatically disables some checks when your
-# server is lagging. This prevents most, but not all, false
-# positives from occuring.
+## 服务器滞后补偿
+# 介绍: 当你服务器卡顿时，将会自动关闭一些功能
+# 这个可以防止发生大部分的误报，
+# 但并不是一定。
 tps_protection:
-  # Enable this feature?
+  # 启用这一特性？
   enable: true
 
-  # Minimum TPS needed to trigger protection
+  # 激发本项保护的最低TPS
   min_tps: 17.0
 
-## Log Violations
-# Description: Logs all violations to a file. Files can be
-# found in /plugins/Matrix/logs
-# Warning: If you are using BungeeCord, I recommend setting
-# this to FALSE. This will prevent useless log files from
-# being stored and using up precious disk space.
+## 记录VL
+# 介绍: 将全部的VL记录到一个文件中，你可以在
+# /plugins/Matrix/logs 找到。
+# 注意: 如果您在使用 Bungeecord, 我推荐设置这个成
+# FALSE. 这个将会提供无用的信息并储存到您的硬盘中
+# 占用硬盘空间。
 log_file: true
 
-## Deny Bypass Permission
-# Description: By setting this option to TRUE, you are
-# forcing Matrix to check everyone on the server, INCLUDING
-# anyone who has Operator status. By setting this option to
-# TRUE you can run the necessary tests without having to
-# remove your operator status.
+## 禁用绕过权限
+# 介绍: 设置这项选项到 FALSE 后, 将会强制 Matrix
+# 对服务器中的每一名玩家进行检测, 包括
+# 拥有OP权限的玩家. 设置这个为TRUE后
+# 你可以在不撤销他们OP权限的情况下，
+# 进行一些不必要的测试。
 disable_bypass_permission: false
 
-## Relog time
-# How long after a player is kicked should he be allowed to log in (seconds)
-# also, you can set -1 to disable this feature
+## 重新登录时间
+# 玩家在被 Matrix处罚后，需要等待多长时间才能重新登录到服务器？ (秒)
+# 当然, 你也可以将其设置为 -1 来关闭此项特性。
 relog_time: 5
 
-## Disabled components
-# You can disable a specific sub check here, instead of disabling
-# the whole check, you can find component name in the end of verbose
-# messages
-# Example: If you add "speed.web" in the blow, the fast web check will
-# be disabled
+## 禁用检测
+# 你可以在这里禁用一个特别的子检测, 用以替代关闭
+# 一整个检测, 你可以在 Verbose信息 的最后面找到
+# 检测项的名称
+# 例子: 如果你在下面添加了 "speed.web", 快速过蜘蛛网检测
+# 将会被禁用。
 disabled_components:
   - 'example entry'
