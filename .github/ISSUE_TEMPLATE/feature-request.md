@@ -1,10 +1,10 @@
 ---
-name: Feature Request
-about: Request missing checks/features.
-title: "[REQUEST] "
-labels: Feature Request
+名称: 特性请求
+关于: 请求未添加的特性/检测
+title: "[请求] "
+labels: 特性请求
 assignees: ''
 
 ---
 
-**What features/checks do you need?:**
+**你想要什么样的 特性/检测?:**
