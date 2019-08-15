@@ -162,7 +162,7 @@ hitbox:
       # 垂直 Hitbox 补偿
       y: 0.4
 
-    # VL 重要性
+    # VL 权重
     vl_weight: 1
 
   # 远距离检测设置
@@ -296,7 +296,7 @@ fastuse:
   # 达到多少的VL值才会取消非法使用物品 (-1 = 永远不取消)
   cancel_vl: 5
 
-  # VL 重要值
+  # VL 权重
   vl_weight: 1
 
   # VL 阈值
@@ -314,7 +314,7 @@ fastbow:
   # 达到多少的VL值才会取消非法射弓 (-1 = 永远不取消)
   cancel_vl: 7
 
-  # VL 重要值
+  # VL 权重
   vl_weight: 1
 
   # VL 阈值
