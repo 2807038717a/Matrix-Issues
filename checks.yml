@@ -131,6 +131,8 @@ killaura:
       async: true
       real_entity_id: true
       only_command_trigger: false
+      # 隐身
+      visible: true
       check_ticks:
         base: 100
         attack_add: 20
@@ -163,7 +165,7 @@ hitbox:
       y: 0.4
 
     # VL 权重
-    vl_weight: 1
+    vl_weight: 2
 
   # 远距离检测设置
   reach:
