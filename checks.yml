@@ -199,8 +199,11 @@ speed:
   # 达到多少的VL值才会取消非法移动 (-1 = 永远不取消)
   cancel_vl: 30
 
-  # 启用 疾跑方向 检测吗?
+  # 启用 疾跑方向(反向疾跑) 检测吗?
   sprint_direction: true
+  
+  # 启用 灵活运动 检测吗?
+  strafe: true
 
   # 启用 快速攀爬/快速上梯 检测吗?
   fastclimb: true
@@ -447,7 +450,7 @@ velocity:
   modules:
     vertical:
       enable: true
-      vl_weight: 1
+      vl_weight: 2
     horizon:
       enable: true
       vl_weight: 4
@@ -456,10 +459,10 @@ velocity:
       vl_weight: 2
     delay:
       enable: true
-      vl_weight: 1
+      vl_weight: 3
     expect:
       enable: true
-      vl_weight: 2
+      vl_weight: 3
     pattern:
       enable: true
       vl_weight: 7
