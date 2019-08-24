@@ -26,6 +26,12 @@ player_latency_protection:
   # 启用这一特性？
   enable: true
 
+## 隐藏模式
+# 如果你启动了隐藏模式, Matrix 将不会对玩家进行拉回
+# 亦或是取消非法动作. 我不建议将本项启用,
+# 它将会使作弊者有机可乘.
+ghost_mode: false
+
 ## 云服务
 # Matrix 可以连接到云服务器，并提供
 # 一些云服务，当然，这是免费的。
