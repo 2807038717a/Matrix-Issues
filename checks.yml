@@ -32,7 +32,7 @@ killaura:
     # 这使用机器学习算法来判断玩家是否在作弊。
     machine_learning:
       enable: true
-      vl_weight: 15
+      vl_weight: 10
     # 连点器检测
     # 检测玩家是否在使用连点器。
     auto_clicker:
@@ -208,9 +208,12 @@ speed:
   # 启用 快速攀爬/快速上梯 检测吗?
   fastclimb: true
 
-  # 启用 不减速 检测吗?
+  # 不减速检测设置
   # 它将会检测玩家在 吃/蹲/射弓 时的速度是否过快
-  noslow: true
+  noslow:
+    enable: true
+    vl_weight: 4
+    cancel_vl: 15
 
   # VL 阈值
   # VL值: '<指令>'
@@ -450,7 +453,7 @@ velocity:
   modules:
     vertical:
       enable: true
-      vl_weight: 2
+      vl_weight: 4
     horizon:
       enable: true
       vl_weight: 4
@@ -458,9 +461,6 @@ velocity:
       enable: true
       vl_weight: 2
     delay:
-      enable: true
-      vl_weight: 3
-    expect:
       enable: true
       vl_weight: 3
     pattern:
