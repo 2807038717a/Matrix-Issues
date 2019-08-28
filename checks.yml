@@ -1,6 +1,6 @@
 #### MATRIX CONFIG FILE
 #                         MATRIX ANTI CHEAT
-#             文件: checks.yml  | 最终编辑: @2.2.4
+#             文件: checks.yml  | 在这编辑检测方法
 #
 # 链接s:
 #   1. 问题收集器: https://github.com/jiangdashao/Matrix-Issues/issues
@@ -343,8 +343,8 @@ fastheal:
   # VL 阈值
   # VL值: '<指令>'
   commands:
-    10: 'matrix notify %player% tried to regain health too quickly (FastHeal)'
-    20: 'matrix kick %player% FastHeal Hacks'
+    10: 'matrix notify %player% 尝试快速回血 (快速回血)'
+    20: 'matrix kick %player% 快速回血'
 
 ## 方块
 # 检测并防止玩家过快地 破坏, 放置, 搭/向上搭
@@ -353,13 +353,7 @@ block:
   enable: true
 
   # 达到多少的VL值才会取消非法放置/破坏 (-1 = 永远不取消)
-  cancel_vl: 15
-
-  # 搭路拖回系统
-  # 如果他们在使用搭路作弊，这可以代替方块撤回，而使用拽回玩家实体的方法。
-  drag_back:
-    enable: true
-    start_vl: 3
+  cancel_vl: 3
 
   # 模块列表
   # 你可以在这里关闭一些模块
