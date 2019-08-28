@@ -372,16 +372,6 @@ block:
     fastplace:
       enable: true
       vl_weight: 1
-    # 它可以检测过快地搭路
-    scaffold:
-      enable: true
-      vl_weights:
-        safewalk: 4
-        expand: 3
-        limit: 1
-        head: 5
-        simple: 3
-        direction: 4
     # 它可以检测过快地向上搭方块。
     tower:
       enable: true
@@ -400,6 +390,39 @@ block:
   commands:
     10: 'matrix notify %player% 尝试过快地放置/破坏方块 (FastPlace)'
     20: 'matrix kick %player% 快速放置/破坏作弊'
+
+## 快速搭路检测
+# 检测并防御玩家以不同寻常的速度搭路或者向上搭路。
+scaffold:
+  # 启用此检测？
+  enable: true
+
+  # VL 取消值
+  cancel_vl: 15
+
+  # 模块
+  modules:
+    # 可以检测玩家快速搭路
+    scaffold:
+      enable: true
+      vl_weights:
+        safewalk: 4
+        expand: 3
+        limit: 1
+        head: 5
+        simple: 3
+        direction: 4
+    # 它可以检测玩家以过快的速度向上搭路
+    tower:
+      enable: true
+      vl_weight: 2
+
+  # VL 阈值
+  # VL值: '<指令>'
+  commands:
+    7: 'matrix notify %player% 尝试快速搭路 (Scaffold)'
+    15: 'matrix notify %player% 尝试快速搭路 (Scaffold) #2'
+    24: 'matrix kick %player% 快速搭路/向上搭'
 
 ## 水上行走
 # 检测并防止玩家在水中移动过快，甚至是在水上走。
