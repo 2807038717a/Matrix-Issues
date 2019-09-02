@@ -231,6 +231,12 @@ fly:
 
   # 达到多少的VL值才会取消非法移动  (-1 = 永远不取消)
   cancel_vl: 50
+  
+  # 飞行能力检测
+  # 这可能与部分插件不兼容，请自行测试
+  ability:
+    enable: true
+    vl_weight: 20
 
   # 严格滑行检测
   strict_glide:
