@@ -1,6 +1,6 @@
 #### MATRIX CONFIG FILE
 #                         MATRIX ANTI CHEAT
-#             文件: config.yml  | 最终编辑: @2.1.1
+#             文件: config.yml  | 这里是全局自定义的配置
 #
 # 链接s:
 #   1. 问题收集器: https://github.com/jiangdashao/Matrix-Issues/issues
@@ -34,10 +34,16 @@ ghost_mode: false
 
 ## 云服务
 # Matrix 可以连接到云服务器，并提供
-# 一些云服务，当然，这是免费的。
+# 一些云服务，你也可以购买付费方案来获取更多的检测以及服务！
 cloud:
   # 启用云服务？
   enable: true
+  
+  # 登陆用户名
+  user: ''
+
+  # 登陆密码
+  password: ''
 
 ## 服务器滞后补偿
 # 介绍: 当你服务器卡顿时，将会自动关闭一些功能
