@@ -21,126 +21,52 @@ killaura:
   # 启用 KillAura 检测吗?
   enable: true
 
-  # 取消系统
-  # 若玩家被检测为作弊，这可以取消他对其他人造成的攻击伤害。 (-1 = 永远不取消)
-  # 注: 只有部分检测拥有取消系统，并不是全部。
-  cancel_vl: 3
+  # 每个模块的权重设置
+  # 设置到 -1 来禁用模块.
+  # 注意: 有些检测需要您是付费用户
+  # 才可以使用, 例如 "pitch.T1" 或 自瞄检测
+  vl_weights:
+    accuracy: 100
+    aimassist: 10
+    pitch: 5
+    post: 1
+    dead: 3
+    npc: 5
+    machine_learning: 10
+    noswing: 4
+    sprint: 5
+    super_kb: 20
+    autoclicker: 5
+    yaw: 5
+    angle: 8
 
-  # 检测模块设置
-  modules:
-    # 机器学习杀戮光环检测
-    # 这使用机器学习算法来判断玩家是否在作弊。
+  # 高级设置, 你可以自定义一些检测的数值
+  # 在这. 如果你不知道你在做什么
+  # 那就不要做!
+  settings:
+    # 连点器设置
+    autoclicker:
+      max_cps: 17
+
+    # 机器学习设置
     machine_learning:
-      enable: true
-      vl_weight: 10
-    # 连点器检测
-    # 检测玩家是否在使用连点器。
-    auto_clicker:
-      # 每秒点击数(CPS) 检测
-      cps:
-        enable: true
-        max_cps: 15
-        vl_weight: 4
-      # 点击延迟检测
-      delay:
-        enable: true
-        vl_weight: 3
-        # 不同玩家拥有不同的最短点击延迟
-        # 数值更高 = 更敏感, 但我不建议您将其设置的太高，这可能会造成误判。
-        delay_diff_threshold: 150
-      # 数据包连点模式, 它可以检测一些外部的连点软件。
-      packet:
-        enable: true
-        vl_weight: 5
-      # 长期 CPS 差异检测
-      cps_long_term:
-        enable: true
-        vl_weight: 5
-    # 命中率检测
-    # 防止玩家以高命中率攻击其他玩家。
-    accuracy:
-      enable: true
-      vl_weight: 20
-      max_accuracy: 70
-    # Yaw 模式
-    # 当玩家战斗时，分析玩家 yaw轴 移动
-    yaw:
-      enable: true
-      vl_weight: 5
-    # Pitch 模式
-    # 当玩家战斗时，分析玩家 pitch轴 移动
-    pitch:
-      enable: true
-      vl_weight: 5
-    # 摇头
-    # 检测玩家的 Pitch值  > 90 或者 <-90
-    derp:
-      enable: true
-      vl_weight: 10
-    # 捕捉瞄准
-    # 防止玩家快速切换攻击目标
-    snap_aim:
-      enable: true
-      vl_weight: 5
-    # 已死亡的实体检测
-    # 在杀死目标后，防止玩家攻击他们死亡的实体。
-    dead:
-      enable: true
-      vl_weight: 3
-    # 不摇动手臂
-    # 防止玩家在攻击玩家时不摇动手臂。
-    noswing:
-      enable: true
-      vl_weight: 2
-    # 简单数据包模式
-    # 防止玩家发送 Flying 数据包后，立即攻击他人。
-    simple:
-      enable: true
-      vl_weight: 1
-    # 暴击
-    # 防止玩家在没有满足暴击条件的情况下，暴击其他人
-    critical:
-      enable: true
-      vl_weight: 4
-      cancel: true
-    # 过大击退检测
-    superkb:
-      enable: true
-      vl_weight: 5
-    # 自动格挡检测
-    auto_block:
-      enable: true
-      vl_weight: 4
-    # 战斗特征检测
-    style:
-      enable: true
-      vl_weight: 10
-    # 瞄准特征检测
-    aim_feature:
-      enable: true
-      vl_weight: 5
-    # 假转头
-    fake_rotation:
-      enable: true
-      vl_weight: 8
+      # 格式: - '#XXX'. 例如: - '#66'
+      disable_patterns: {}
     # 假人检测
     npc:
-      enable: true
-      vl_weight: 4
-      vl_weight_fast_attack: 10
       async: true
       real_entity_id: true
       only_command_trigger: false
-      # 隐身
       visible: true
       check_ticks:
         base: 100
         attack_add: 20
         hit_bot_add: 50
       movement:
-        distance_base: 3.0
-        distance_random_size: 1.0
-        distance_attack_base: 2.0
+        distance_base: 3.2
+        distance_random_size: 0.75
+        distance_attack_base: 3.0
+
   # VL 阈值
   # VL 值: '<指令>'
   commands:
