@@ -74,45 +74,41 @@ killaura:
     35: 'matrix notify %player% 可能在战斗作弊 (KillAura) #2'
     45: 'matrix kick %player% 杀戮光环'
 
-## 击打体积
-# 介绍: 此项检测防止玩家使用 HitBox, Angle, Reach 作弊。（长臂猿？）
+## 攻击范围
+# 介绍: 本项检测意在防止玩家使用 HitBox, Angle, Reach 作弊.
+# 注: 本项检测只会对玩家的攻击进行严格处理, 它对你攻击
+# 非玩家实体时会十分宽松. 所以, 如果你发现一名玩家使用作弊工具
+# 对非玩家实体进行攻击但没有检测出来, 这很正常, 不要将它视为一个问题.
 hitbox:
-  # 启用 HitBox 检测吗?
+  # 启用攻击范围检测？
   enable: true
 
-  # 距离检测设置
-  direction:
-    # HitBox 补偿
-    # 更小 = 更敏感
-    compensation:
-      # 水平 Hitbox 补偿
-      xz: 0.8
-      # 垂直 Hitbox 补偿
-      y: 0.4
+  # 玩家体积
+  hitbox:
+    width: 0.45
+    height: 2.0
 
-    # VL 权重
-    vl_weight: 2
+  # 最小攻击距离
+  max_reach: 3.2
 
-  # 远距离检测设置
-  reach:
-    # 最大攻击距离
-    max_reach: 3.1
+  # 强制取消距离
+  # 如果您服务器有击飞模式请不要将其设置的太低
+  force_cancel_distance: 6.0
 
-    # 当玩家移动时应该需要怎样放宽处理
-    # 更高的值 = 更宽容的进行检测
-    # 建议数值: 1.0 ~ 1.5
-    # 达到容差值 = 移动距离 * 卡顿TIck * 移动宽容值
-    move_lenient: 1.1
+  # 权重
+  vl_weight:
+    reach: 3
+    direction: 4
 
-  # 达到多少的VL值才会取消非法击打？ (-1 = 永远不取消)
-  cancel_vl: 4
+  # 达到多少的VL值才会取消非法攻击  (-1 = 永远不取消)
+  cancel_vl: 6
 
   # VL 阈值
   # VL值: '<指令>'
   commands:
-    10: 'matrix notify %player% 尝试在最大距离外击打实体 (HitBox)'
-    15: 'matrix notify %player% 尝试在最大距离外击打实体 (HitBox) #2'
-    24: 'matrix kick %player% 长距离作弊'
+    10: 'matrix notify %player% 尝试以非法的距离攻击实体 (HitBox)'
+    15: 'matrix notify %player% 尝试以非法的距离攻击实体 (HitBox) #2'
+    24: 'matrix kick %player% 攻击范围加强作弊'
 
 ## 移动加速检测
 # 检测玩家移动有多快，并防止玩家以过快的速度移动。
