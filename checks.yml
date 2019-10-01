@@ -131,13 +131,6 @@ speed:
   # 启用 快速攀爬/快速上梯 检测吗?
   fastclimb: true
 
-  # 不减速检测设置
-  # 它将会检测玩家在 吃/蹲/射弓 时的速度是否过快
-  noslow:
-    enable: true
-    vl_weight: 4
-    cancel_vl: 15
-
   # VL 阈值
   # VL值: '<指令>'
   commands:
