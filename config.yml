@@ -25,6 +25,11 @@ check_update: true
 player_latency_protection:
   # 启用这一特性？
   enable: true
+  
+## 踢出雷击效果
+# 如果有个人被使用指令 /matrix kick 踢出，应该
+# 生成雷击效果吗
+kick_strike_lightning: true
 
 ## 隐藏模式
 # 如果你启动了隐藏模式, Matrix 将不会对玩家进行拉回
