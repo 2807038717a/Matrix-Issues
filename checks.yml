@@ -36,11 +36,36 @@ killaura:
     noswing: 4
     sprint: 5
     super_kb: 20
-    autoclicker: 5
     yaw: 5
     angle: 8
     critical: 5
 
+  # 综合检测设置
+  # 这个检测可以综合地准确计算出玩家是否在使用杀戮光环或者是增大体积
+  # 注意：这个检测只对付费用户有效
+  combine:
+    enable: true
+    vl_weights:
+      P1: 40
+      P2: 30
+      P3: 15
+      P4: 15
+      P5: 35
+      P6: 50
+      P7: 15
+      P8: 20
+      P9: 20
+
+  # 连点器检测
+  # 防止玩家使用连点器作弊
+  autoclicker:
+    max_cps: 24 # 普通玩家可以抖动点击达到 24次/秒
+    vl_weights:
+      cps: 5
+      delay: 5 # 此项模块可能会由于抖动点击而误报，如果你想禁用它请设置为 -1
+      cps_long: 5
+      external: 10
+      
   # 高级设置, 你可以自定义一些检测的数值
   # 在这. 如果你不知道你在做什么
   # 那就不要做!
