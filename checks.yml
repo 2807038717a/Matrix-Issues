@@ -416,31 +416,29 @@ velocity:
   # 启用 这项 检测吗?
   enable: true
 
-  # 模组列表
-  # 你可以关闭一些反击退检测
-  # 设置到 false 来关闭这些检测
-  modules:
-    vertical:
-      enable: true
-      vl_weight: 4
-    horizon:
-      enable: true
-      vl_weight: 4
-    air:
-      enable: true
-      vl_weight: 2
-    delay:
-      enable: true
-      vl_weight: 3
-    pattern:
-      enable: true
-      vl_weight: 7
+  # 从被攻击到玩家被击退需要多少tick? (tick 为单位)
+  # 如果在这个规定的时间内玩家没有被击退
+  # 这个玩家将会被检测
+  wait_time: 20
+
+  # 忽略卡顿的玩家，这一选项会自动忽略
+  # 卡顿的玩家或者是在切换材质包的玩家
+  ignore_lag: true
+
+  # 权重
+  # -1 = 禁用该模块
+  vl_weights:
+    P1: 10
+    P2: 5
+    P3: 7
+    P4: 4
+    P5: 4
 
   # VL 阈值
   # VL值: '<指令>'
   commands:
-    10: 'matrix notify %player% 尝试无视服务器击退 (Anti-Knockback)'
-    15: 'matrix notify %player% 尝试无视服务器击退 (Anti-Knockback) #2'
+    10: 'matrix notify %player% 尝试无视服务器击退 (Velocity)'
+    15: 'matrix notify %player% 尝试无视服务器击退 (Velocity) #2'
     20: 'matrix kick %player% 反击退作弊'
 
 ## 刷屏
