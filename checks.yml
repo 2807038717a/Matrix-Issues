@@ -92,6 +92,7 @@ killaura:
         distance_base: 3.2
         distance_random_size: 0.75
         distance_attack_base: 3.0
+        move_up_after_attack: false
 
   # VL 阈值
   # VL 值: '<指令>'
@@ -204,36 +205,31 @@ fly:
     50: 'matrix notify %player% 正在尝试飞行 (Fly) #1'
     100: 'matrix notify %player% 正在尝试飞行 (Fly) #2'
     180: 'matrix kick %player% 飞行作弊'
-
-
+    
 ## 坏数据包
 # 防止玩家发送过多的移动数据包或发送过多的非法数据包。
 badpackets:
   # 启用本项检测吗?
   enable: true
 
-  # 达到多少的VL值才会取消非法数据包 (-1 = 永远不取消)
-  cancel_vl: 30
+  # 缓存大小 (秒)
+  # 更大: 对高延迟玩家的误报会更少
+  # 更小: 更严格，能快速检测变速齿轮作弊。
+  # 不要将其设置的低于 10
+  buffer_size: 20
 
-  # 数据包队列大小 (秒)
-  # 更小-> 更快检测变速齿轮, 更高 -> 对高延迟玩家更友好
-  cache_size: 30
+  # 冻结时间 (毫秒, 1秒=1000 毫秒)
+  # 如果他们在短时间内发送过多的移动数据包
+  # 就冻结他们这些时间
+  freeze_time: 500
 
-  # Tick率 检测
-  # 它可以检测一些平稳的变速齿轮 (1.01~1.05 变速)
-  tick_rate:
-    # 启用这项检测吗?
-    enable: true
+  # 玩家最多可以发送超过限制的多少数据包？
+  max_extra_packets: 15
 
-    # 缓存大小 (秒)
-    # 更大: 对高延迟玩家的误报会更少
-    # 更小: 更严格，能快速检测变速齿轮作弊。
-    cache_size: 5
-
-  # 无用的Verbose信息输出 (+0 VL 信息)
-  # 如果你不想看到BadPackets在verbose信息中刷屏
-  # 你可以将本项选项设置到false.
-  verbose_useless: true
+  # 权重
+  vl_weights:
+    limit: 10
+    timer: 10
 
   # VL 阈值
   # VL值: '<指令>'
@@ -313,6 +309,7 @@ block:
     fastplace:
       enable: true
       vl_weight: 1
+      max_place_per_second: 9
     # 它可以检测过快地向上搭方块。
     tower:
       enable: true
@@ -433,6 +430,8 @@ velocity:
     P3: 7
     P4: 4
     P5: 4
+    P6: 2
+    P7: 3
 
   # VL 阈值
   # VL值: '<指令>'
