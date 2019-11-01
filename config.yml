@@ -26,6 +26,10 @@ player_latency_protection:
   # 启用这一特性？
   enable: true
   
+## 内部权限缓存刷新频率 （秒）
+# 默认: 15 秒
+permission_refresh_interval: 15
+  
 ## 踢出雷击效果
 # 如果有个人被使用指令 /matrix kick 踢出，应该
 # 生成雷击效果吗
