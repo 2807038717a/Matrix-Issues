@@ -586,29 +586,3 @@ vehicle:
     5: 'matrix notify %player% 可能在使用船作弊 (Vehicle)'
     10: 'matrix notify %player% 可能在使用船作弊  #2'
     17: 'matrix kick %player% 非法船移动'
-
-
-## XRay
-# 通过分析玩家行为来防止玩家使用矿物透视作弊
-# (并非在限制/分析挖矿数量)
-# 如果你的服务器有很多玩家，可能会使服务器卡顿
-xray:
-  # 启用此检测？
-  enable: true
-
-  # 可信阈值
-  credibility_threshold: 80.0
-
-  # 可信缓存
-  # 大数值 -> 更慢检测, 但会减少误报
-  cache_size: 2
-
-  # VL 权重
-  vl_weight: 5
-
-  # VL 阈值
-  # VL值: '<指令>'
-  commands:
-    5: 'matrix notify %player% 可能在使用矿物透视'
-    10: 'matrix notify %player% 可能在使用矿物透视 #2'
-    15: 'matrix kick %player% 矿物透视'
